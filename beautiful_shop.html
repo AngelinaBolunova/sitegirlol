@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Магазин одежды "Девичья феерия" </title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Эффект мерцания для логотипа */
+        .logo {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff3399, 0 0 30px #ff66b2;
+            }
+            to {
+                text-shadow: 0 0 20px #ff99cc, 0 0 30px #ff66b2, 0 0 40px #ff99cc;
+            }
+        }
+        /* Плавное появление для секции departments */
+        .departments {
+            opacity: 0;
+            animation: fadeIn 3s ease forwards;
+            animation-delay: 1s;
+            margin-bottom: 40px;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Эффект наведения с масштабированием для кнопок departments */
+        .department:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        /* Плавное появление для слайдера */
+        .slider {
+            opacity: 0;
+            animation: fadeInSlider 2s ease forwards;
+            animation-delay: 0.5s;
+        }
+        @keyframes fadeInSlider {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Стиль для секции с преимуществами */
+        .advantages {
+            margin: 0 auto 40px auto;
+            max-width: 900px;
+            background: #fff0f6;
+            border-radius: 15px;
+            padding: 30px 20px;
+            box-shadow: 0 0 20px rgba(255, 51, 153, 0.3);
+            font-weight: 700;
+            font-size: 20px;
+            color: #660033;
+            text-align: center;
+            font-family: 'Brush Script MT', cursive;
+        }
+        /* Декоративные вертикальные элементы по бокам main */
+        main {
+            position: relative;
+        }
+        main::before, main::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 12px;
+            height: 100%;
+            background: radial-gradient(circle, #ff66b2, #ff3399);
+            border-radius: 6px;
+            opacity: 0.5;
+            z-index: 1;
+            animation: floatUpDown 6s ease-in-out infinite;
+        }
+        main::before {
+            left: 0;
+            animation-delay: 0s;
+        }
+        main::after {
+            right: 0;
+            animation-delay: 3s;
+        }
+        @keyframes floatUpDown {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        /* Новый стиль для секции с цитатой */
+        .quote-section {
+            margin: 20px auto 40px auto;
+            max-width: 700px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff3399;
+            text-align: center;
+            text-shadow: 0 0 10px #ff66b2;
+            user-select: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 10px #ff66b2;
+            }
+            50% {
+                opacity: 0.7;
+                text-shadow: 0 0 20px #ff99cc;
+            }
+        }
+        /* New style for reviews button */
+        .reviews-button {
+            display: inline-block;
+            margin: 20px auto 40px auto;
+            padding: 15px 30px;
+            background-color: #d81b60;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-family: 'Brush Script MT', cursive;
+        }
+        .reviews-button:hover {
+            background-color: #ad1457;
+        }
+        .reviews-button-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <div class="logo" style="display: flex; align-items: center; gap: 15px;">
+            <img src="логотип.png" alt="Логотип" style="height: 90px; width: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 51, 153, 0.5);" />
+            <div style="display: flex; flex-direction: column; line-height: 1.1;">
+                <span style="font-weight: 900; font-size: 28px; font-family: 'Brush Script MT', cursive; color: #d81b60; text-shadow: 1px 1px 3px #f48fb1;">Девичья феерия</span>
+                <span style="font-size: 16px; font-weight: 600; font-family: 'Georgia', serif; color: #880e4f; font-style: italic;">Магазин женской одежды</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="beautiful_shop.html">Главная</a></li>
+                <li><a href="about_us.html">О нас</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="cart.php" class="btn">Корзина</a>
+            <button class="btn" onclick="window.location.href='my_orders.php'" style="margin-left: 10px;">Мои заказы</button>
+            <button class="btn" onclick="window.location.href='login.php'">Вход в аккаунт</button>
+        </div>
+    </header>
+    <div class="search-bar">
+        <form method="get" action="search.php">
+            <input type="text" name="query" placeholder="Поиск товаров..." required />
+            <button type="submit">Найти</button>
+        </form>
+    </div>
+    <main>
+        <div class="vertical-floating-text left">Девичья феерия</div>
+        <div class="vertical-floating-text right">Девичья феерия</div>
+        <div class="main-background-quotes">
+            <span>Стиль — это способ сказать, кто ты, не произнося ни слова.</span>
+            <span>Мода проходит, стиль остается.</span>
+            <span>Одежда — это искусство, которое носишь.</span>
+            <span>Будь собой, все остальные роли уже заняты.</span>
+            <span>Красота начинается с уверенности.</span>
+            <span>Мода — это то, что ты покупаешь, стиль — то, что ты делаешь с этим.</span>
+            <span>Одежда — это способ выразить себя без слов.</span>
+            <span>Стиль — это отражение твоей личности.</span>
+            <span>Мода — это игра, стиль — это победа.</span>
+            <span>Одежда должна быть удобной и красивой.</span>
+        </div>
+        <section class="slider" style="opacity: 1; animation: none;">
+            <img src="slide1.png" alt="Слайд 1" class="active" />
+            <img src="slide2.png" alt="Слайд 2" />
+            <img src="slide3.png" alt="Слайд 3" />
+            <button class="slider-arrow left" aria-label="Предыдущий слайд">&#10094;</button>
+            <button class="slider-arrow right" aria-label="Следующий слайд">&#10095;</button>
+        </section>
+        <!-- Удалена центральная цитата -->
+        <section class="departments" style="opacity: 1; animation: none;">
+            <a href="futbolki.php" class="department">Футболки</a>
+            <a href="kofty.php" class="department">Кофты</a>
+            <a href="bryuki.php" class="department">Брюки</a>
+        </section>
+        <div class="reviews-button-container">
+            <a href="store_reviews.php" class="reviews-button">Отзывы о магазине</a>
+        </div>
+        <section class="advantages">
+            Добро пожаловать в "Девичью феерию" — магазин, где качество и стиль идут рука об руку. Мы предлагаем только лучшие ткани, уникальный дизайн и заботимся о каждом клиенте. Ваш комфорт и удовлетворение — наш главный приоритет.
+        </section>
+    </main>
+    <footer>
+        © 2025 Девичья феерия. Все права защищены.
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('.slider img');
+            const leftArrow = document.querySelector('.slider-arrow.left');
+            const rightArrow = document.querySelector('.slider-arrow.right');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
+                });
+            }
+
+            leftArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showSlide(currentIndex);
+            });
+
+            rightArrow.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showSlide(currentIndex);
+            });
+        });
+    </script>
+</body>
+</html>
